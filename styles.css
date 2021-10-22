@@ -1,0 +1,13 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+body {
+    margin: 0px
+}
+
+:root {
+    --dark-gray: hsl(0, 0%, 17%);
+    --vr-dark-gray: hsl(0, 0%, 59%)
+}
