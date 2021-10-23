@@ -10,6 +10,20 @@
       rel="stylesheet"
     />
 
+    <!--Import Map-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+
     <link rel="stylesheet" href="styles.css" />
 
     <title>Frontend Mentor | IP Address Tracker</title>
@@ -18,14 +32,37 @@
     <div class="banner--container">
       <div class="banner--heading">IP Address Tracker</div>
       <form class="banner--form">
-        
-          <input
-            type="text"
-            placeholder="Search for any IP address or domain"
-          /><button type="submit">></button>
-      
+        <input
+          type="text"
+          placeholder="Search for any IP address or domain"
+        /><button type="submit">></button>
       </form>
+      <div class="banner--cards">
+        <div class="banner--card">
+          <div class="banner--card--heading">Ip Address</div>
+          <div id="ipAddress" class="banner--card--text">192.212.174.101</div>
+        </div>
+        <div class="divider"></div>
+
+        <div class="banner--card">
+          <div class="banner--card--heading">Location</div>
+          <div id="location" class="banner--card--text">Brooklyn, NY 10001</div>
+        </div>
+        <div class="divider"></div>
+
+        <div class="banner--card">
+          <div class="banner--card--heading">Timezone</div>
+          <div id="timeZone" class="banner--card--text">UTC-05:00</div>
+        </div>
+        <div class="divider"></div>
+
+        <div class="banner--card">
+          <div class="banner--card--heading">ISP</div>
+          <div id="isp" class="banner--card--text">SpaceX Starlink</div>
+        </div>
+      </div>
     </div>
+    <div id="mapid" class="map--container"></div>
 
     <!-- <div class="attribution">
       Challenge by
@@ -34,4 +71,47 @@
       >. Coded by <a href="#">Mondara Thotafe</a>.
     </div> -->
   </body>
+
+  <script>
+    const ipAdress_elem = document.querySelector('#ipAddress');
+    const location_elem = document.getElementById('location');
+    const timeZone_elem = document.getElementById('timeZone');
+    const isp_elem = document.getElementById('isp');
+
+    var mymap = L.map("mapid");
+
+    L.tileLayer(
+      "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+      {
+        attribution:
+          'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: "mapbox/streets-v11",
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken:
+          "pk.eyJ1IjoibW9uZGFyYSIsImEiOiJja3YzYmo2b3EwazIwMzFvNjBkZjc0eTVwIn0.cDRmKTJazPXQPRi46X-UfA",
+      }
+    ).addTo(mymap);
+
+    function handleData({ip, location, isp}) {
+      console.log(ip, location, isp);
+      console.log(location.lat, location.lng)
+
+      ipAdress_elem.innerText = ip;
+      location_elem.innerText = `${location.city}, ${location.country}`;
+      timeZone_elem.innerText = `UTC${location.timezone}`;
+      isp_elem.innerText = isp;
+
+      mymap.setView([-33.839, 151.2072], 13);
+    }
+
+    fetch(
+      "https://geo.ipify.org/api/v2/country,city?apiKey=at_fz3e43ym5SC8fMxsDzwHC6PxBLzab"
+    )
+      .then((response) => response.json())
+      .then(handleData);
+
+
+  </script>
 </html>
