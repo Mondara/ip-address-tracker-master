@@ -4,20 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Import Font -->
+    <!-- IMPORT FONT -->
     <link
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
 
-    <!--Import Map-->
+    <!--IMPORT MAP-->
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
       integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
       crossorigin=""
     />
-
     <script
       src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
@@ -29,6 +28,7 @@
     <title>Frontend Mentor | IP Address Tracker</title>
   </head>
   <body>
+    <!-- BANNER -->
     <div class="banner--container">
       <div class="banner--heading">IP Address Tracker</div>
       <form class="banner--form">
@@ -39,39 +39,43 @@
         /><button type="submit">></button>
         <small></small>
       </form>
+
+      <!-- CARDS -->
       <div class="banner--cards">
+        <!-- IP ADDRESS -->
         <div class="banner--card">
           <div class="banner--card--heading">Ip Address</div>
-          <div id="ipAddress" class="banner--card--text">192.212.174.101</div>
+          <div id="ipAddress" class="banner--card--text">-- --</div>
         </div>
         <div class="divider"></div>
-
+        <!-- LOCATION -->
         <div class="banner--card">
           <div class="banner--card--heading">Location</div>
-          <div id="location" class="banner--card--text">Brooklyn, NY 10001</div>
+          <div id="location" class="banner--card--text">-- --</div>
         </div>
         <div class="divider"></div>
-
+        <!-- TIMEZONE -->
         <div class="banner--card">
           <div class="banner--card--heading">Timezone</div>
-          <div id="timeZone" class="banner--card--text">UTC-05:00</div>
+          <div id="timeZone" class="banner--card--text">-- --</div>
         </div>
         <div class="divider"></div>
-
+        <!-- ISP -->
         <div class="banner--card">
           <div class="banner--card--heading">ISP</div>
-          <div id="isp" class="banner--card--text">SpaceX Starlink</div>
+          <div id="isp" class="banner--card--text">-- --</div>
         </div>
       </div>
     </div>
+    <!-- MAP -->
     <div id="mapid" class="map--container"></div>
 
-    <!-- <div class="attribution">
+    <footer class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         >Frontend Mentor</a
       >. Coded by <a href="#">Mondara Thotafe</a>.
-    </div> -->
+    </footer>
   </body>
 
   <script src="script.js"></script>

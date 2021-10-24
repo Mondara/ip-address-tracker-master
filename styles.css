@@ -1,185 +1,247 @@
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 
-    font-family: 'Rubik', sans-serif;
-    font-size: 18px;
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
 }
 
 body {
-    margin: 0px;
+  margin: 0px;
 }
 
 :root {
-    --dark-gray: hsl(0, 0%, 17%);
-    --vr-dark-gray: hsl(0, 0%, 59%);
-    --vr-light-gray: hsl(0, 0%, 97%);
+  --dark-gray: hsl(0, 0%, 17%);
+  --vr-dark-gray: hsl(0, 0%, 59%);
+  --vr-light-gray: hsl(0, 0%, 97%);
 
-    --banner-height: min(450px, 30vh);
-    --border-radius: .8em;
+  --banner-height: min(450px, 30vh);
+  --border-radius: 0.8em;
 }
 
 /* --- Banner CSS --- */
 .banner--container {
-    position: relative;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+  position: relative;
 
-    gap: 2em;
-        
-    width: 100%;
-    height: var(--banner-height);
-    padding-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 
-    background: url('./images/pattern-bg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+  gap: 2em;
+
+  width: 100%;
+  height: var(--banner-height);
+  padding-top: 2em;
+
+  background: url("./images/pattern-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-/* - Banner Heading CSS - */
+/* - Heading CSS - */
 .banner--heading {
-    font-size: 2em;
-    font-weight: 500;
-    color: white;
+  font-size: 2.4em;
+  font-weight: 500;
+  color: white;
 
-    margin-top: 1rem;
+  text-align: center;
+
+  margin-top: 1rem;
 }
 
-/* - Banner Form CSS - */
+/* - Form CSS - */
 .banner--form {
-    --height: 3em;
+  --height: 3em;
 
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 .banner--form input,
 .banner--form button {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 
-    font-size: inherit;
-    padding: 1em;
-    
-    /* height: 3em; */
-}
+  font-size: inherit;
+  padding: 1em;
 
-.banner--form button { cursor: pointer }
-
-.banner--form input {
-    border-top-left-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
-    
-    color: var(--vr-dark-gray);
-
-    width: 30%;
+  /* height: 3em; */
 }
 
 .banner--form button {
-    background-color: black;
-    color: white;
+  cursor: pointer;
+}
 
-    border-top-right-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
+.banner--form input {
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+
+  color: var(--vr-dark-gray);
+
+  width: 30%;
+}
+
+.banner--form button {
+  background-color: black;
+  color: white;
+
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
 }
 
 .banner--form small {
-    display: block;
-    
-    margin: 0.8em auto;
-    font-size: 0.7em;
+  display: block;
+
+  margin: 0.8em auto;
+  font-size: 0.7em;
+}
+
+/* - FORM - SUCCESS AND ERROR CSS - */
+.banner--form small {
+    font-size: 2em;
 }
 
 .error input,
 .error button {
-    color: red;    
-    border: 1px solid red;
+  color: red;
+  border: 1px solid red;
 }
 
 .error input {
-    border-right: none;
+  border-right: none;
 }
 
 .error small {
-    color: red;
+  color: red;
 }
 
 .success input,
 .success button {
-    color: green;    
-    border: 1px solid green;
+  color: green;
+  border: 1px solid green;
 }
 
 .success input {
-    border-right: none;
+  border-right: none;
 }
 
 .success small {
-    color: green;
+  color: green;
 }
-
-
 
 /* - Banner Card CSS - */
 .banner--cards {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 
-    width: 65%;
+  width: 65%;
 
-    background-color: white;
-    border-radius: .8em;
+  background-color: white;
+  border-radius: 0.8em;
 
-    height: 12em;
-    padding: 2em;
+  height: fit-content;
+  padding: 2em;
 
-    position: absolute;
-    bottom: 0;
-    z-index: 1;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
 
-    transform: translateY(50%);
+  transform: translateY(50%);
 }
 
 .divider {
-    background-color: hsl(0, 0%, 93%);
+  background-color: hsl(0, 0%, 93%);
 
-    height: 80%;
-    width: 1.5px;    
+  height: 80%;
+  width: 1.5px;
 }
 
+/* - Banner Card Content CSS - */
 .banner--card {
-    max-width: 25%;
+  max-width: 25%;
+  overflow-wrap: break-word;
 }
+
 .banner--card--heading {
-    text-transform: uppercase;
+  text-transform: uppercase;
 
-    font-size: 1.2em;
-    font-weight: 700;
 
-    color: var(--vr-dark-gray);
+  font-size: 1.2em;
+  font-weight: 700;
 
-    margin-bottom: 1em;
+  color: var(--vr-dark-gray);
+
+  margin-bottom: 1em;
 }
 
 .banner--card--text {
-    text-transform: uppercase;
-    
-    font-size: 1.5em;
-    font-weight: 500;
+  text-transform: uppercase;
 
-    color: var(--dark-gray);
+  font-size: 1.5em;
+  font-weight: 500;
+
+  color: var(--dark-gray);
 }
 
+
+/* --- MAP CSS --- */
 #mapid {
-    z-index: 0;
+  z-index: 0;
 
-    width: 100%;
-    height: calc(100vh - var(--banner-height));
+  width: 100%;
+  height: calc(100vh - var(--banner-height));
 
-    background-color: var(--vr-light-gray)
+  background-color: var(--vr-light-gray);
 }
+
+
+/* --- Footer CSS --- */
+.attribution {
+  text-align: center;
+}
+
+/* --- MEDIA QUERIES CSS --- */
+@media (max-width: 1024px) {
+  .banner--cards {
+    width: 85%;
+  }
+}
+
+/* --- TABLET --- */
+@media (max-width: 768px) {
+  .banner--cards {
+    flex-direction: column;
+    text-align: center;
+
+    /* height: max-content; */
+    transform: translateY(60%);
+  }
+
+  .banner--card {
+    max-width: 80%;
+    margin-bottom: 1em;
+  }
+
+  .banner--form input {
+    width: 70%;
+  }
+
+  .divider,
+  .banner--form small {
+      display: none;
+  }
+
+}
+
+
+/* --- MOBILE --- */
+@media (max-width: 375px) {
+    .banner--cards {
+      transform: translateY(80%);
+    }
+  }

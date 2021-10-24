@@ -4,6 +4,7 @@ const timeZone_elem = document.getElementById("timeZone");
 const isp_elem = document.getElementById("isp");
 
 const form = document.querySelector("form");
+const msg = form.querySelector("small");
 const input_elem = form.elements["ip"];
 
 const IP_REQUIRED = "Please enter a IP Address";
@@ -28,23 +29,22 @@ L.tileLayer(
 
 // -------- LOAD IP IN INFO -------- //
 function handleData({ ip, location, isp }) {
-    console.log(ip, location, isp);
-    console.log(location.lat, location.lng);
-
+    // console.log(ip, location, isp);
+    // console.log(location.lat, location.lng);
     ipAdress_elem.innerText = ip;
     location_elem.innerText = `${location.city}, ${location.country}`;
     timeZone_elem.innerText = `UTC${location.timezone}`;
     isp_elem.innerText = isp;
 
     mymap.setView([location.lat, location.lng], 14);
-    const marker = L.marker([location.lat,  location.lng]).addTo(mymap);
+    const marker = L.marker([location.lat, location.lng]).addTo(mymap);
     marker.bindPopup(`<b>Hey Look, Its You!</b><br><b>Lat:</b> ${location.lat}, <b>Lng:</b> ${location.lng}.`).openPopup();
 
+    clearMessage(); // Clear Loading Text
 }
 
 
 // -------- FETCH IP -------- //
-
 function fetchIP(ip = "") {
     if (ip) {
         fetch(
@@ -63,12 +63,19 @@ function fetchIP(ip = "") {
 }
 
 
+// -------- REST CARDS -------- //
+function resetCards() {
+    ipAdress_elem.innerText = "-- --";
+    location_elem.innerText = "-- --";
+    timeZone_elem.innerText = "-- --";
+    isp_elem.innerText = "-- --";
+}
+
 // -------- FORM VALIDATION -------- //
 
 // show a message with a type of the input
 function showMessage(input, message, type) {
-    // get the small element and set the message
-    const msg = form.querySelector("small");
+    // set the message
     msg.innerText = message;
     // update the class for the input
     form.classList.add(type ? "success" : "error");
@@ -76,12 +83,17 @@ function showMessage(input, message, type) {
     return type;
 }
 
+function clearMessage() {
+    form.classList.remove("success", "error");
+    msg.innerText = "";
+}
+
 function showError(input, message) {
     return showMessage(input, message, false);
 }
 
 function showSuccess(input) {
-    return showMessage(input, "", true);
+    return showMessage(input, "Loading...", true);
 }
 
 function hasValue(input, message) {
@@ -107,7 +119,7 @@ function validateIP(input, requiredMsg, invalidMsg) {
 }
 
 
-// -------- FORM SUBMISION EVEN LISTERNER -------- //
+// -------- FORM SUBMISION EVENT LISTERNER -------- //
 form.addEventListener("submit", (e) => {
     // stop form submission
     e.preventDefault();
@@ -116,9 +128,15 @@ form.addEventListener("submit", (e) => {
     let ipValid = validateIP(input_elem, IP_REQUIRED, IP_INVALID);
     // if valid, submit the form.
     if (ipValid) {
+
+        // reset cards
+        resetCards();
+
+        // fetch ip
         fetchIP(input_elem.value);
     }
 });
 
-fetchIP()
+// -------- RUN ON LOADING -------- //
+fetchIP();
 
