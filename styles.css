@@ -71,8 +71,6 @@ body {
 
   font-size: inherit;
   padding: 1em;
-
-  /* height: 3em; */
 }
 
 .banner--form button {
@@ -99,7 +97,7 @@ body {
 .banner--form small {
   display: block;
 
-  margin: 0.8em auto;
+  margin: 0.4em auto;
   font-size: 0.7em;
 }
 

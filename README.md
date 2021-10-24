@@ -57,7 +57,7 @@ I will continue to improve the app as I continue to learn, adding new features, 
 
 - Website - [Mondara](https://mondarathotage.com/)
 - Linkedin - [@Mondara](https://www.linkedin.com/in/mondara-thotage/)
-- Github - [@Mondara](https://www.twitter.com/yourusername)
+- Github - [@Mondara](https://github.com/Mondara)
 
 ## Acknowledgments
 
