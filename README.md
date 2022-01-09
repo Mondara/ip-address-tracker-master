@@ -43,9 +43,6 @@ Users should be able to:
 
 - Semantic HTML5 markup
 - CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
 - [LeafletJS](https://leafletjs.com/) - To Generate Map 
 - [IP Geolocation API by IPify](https://geo.ipify.org/) - To get IP Address Location
 
@@ -61,4 +58,4 @@ I will continue to improve the app as I continue to learn, adding new features, 
 
 ## Acknowledgments
 
-This app was built as part of Frontend Mentor Free Challenge. And uses LeafletJS and IPify APIS.
+This app was built as part of Frontend Mentor Free Challenge. And uses LeafletJS and IPify API.
